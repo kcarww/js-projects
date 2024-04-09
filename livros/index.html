@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Book Catalog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Online Book Catalog</h1>
+        <div id="catalog">
+            <!-- Livros serão exibidos aqui -->
+        </div>
+        <div id="addBookForm">
+            <h2>Add New Book</h2>
+            <input type="text" id="title" placeholder="Title">
+            <input type="text" id="author" placeholder="Author">
+            <input type="text" id="genre" placeholder="Genre">
+            <input type="text" id="year" placeholder="Year">
+            <button onclick="addBook()">Add Book</button>
+        </div>
+        <div id="searchForm">
+            <input type="text" id="searchTerm" placeholder="Search">
+            <button onclick="searchBook()">Search</button>
+        </div>
+        <div id="sortOptions">
+            <label for="sort">Sort By:</label>
+            <select id="sort">
+                <option value="title">Title</option>
+                <option value="author">Author</option>
+                <option value="year">Year</option>
+            </select>
+            <button onclick="sortBooks()">Sort</button>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
