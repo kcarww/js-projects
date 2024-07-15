@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- 
+Tutorial: https://www.youtube.com/watch?v=zxxB9SFh9p4
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Namora comigo?</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div id="conteudo">
+      <h2>Aceita namorar comigo?</h2>
+      <div style="margin: auto; width: 170px">
+        <button
+          style="position: fixed; display: block"
+          class="btn"
+          onclick="sim()"
+        >
+          SIM
+        </button>
+        <button
+          class="btn"
+          onclick="desvia(this)"
+          onmouseover="desvia(this)"
+          style="position: absolute"
+        >
+          NÃO
+        </button>
+      </div>
+    </div>
+  </body>
+
+  <script src="scripts.js"></script>
+</html>
