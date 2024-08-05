@@ -1,59 +1,80 @@
-let books = [];
+document.addEventListener('DOMContentLoaded', () => {
+    const bookForm = document.getElementById('book-form');
+    const bookList = document.getElementById('book-list');
 
-// Função para carregar os livros do localStorage
-function loadBooksFromStorage() {
-    const storedBooks = localStorage.getItem('books');
-    if (storedBooks) {
-        books = JSON.parse(storedBooks);
-        displayBooks(books);
+    bookForm.addEventListener('submit', addBook);
+    document.addEventListener('DOMContentLoaded', displayBooks);
+
+    function getBooks() {
+        return JSON.parse(localStorage.getItem('books')) || [];
     }
-}
 
-// Função para salvar os livros no localStorage
-function saveBooksToStorage() {
-    localStorage.setItem('books', JSON.stringify(books));
-}
+    function setBooks(books) {
+        localStorage.setItem('books', JSON.stringify(books));
+    }
 
-// Chamada da função para carregar os livros ao carregar a página
-window.onload = loadBooksFromStorage;
+    function displayBooks() {
+        const books = getBooks();
+        books.forEach((book, index) => addBookToList(book, index));
+    }
 
-// Restante do código permanece igual
+    function addBook(e) {
+        e.preventDefault();
 
-function addBook() {
-    const title = document.getElementById('title').value;
-    const author = document.getElementById('author').value;
-    const genre = document.getElementById('genre').value;
-    const year = document.getElementById('year').value;
+        const title = document.getElementById('title').value;
+        const author = document.getElementById('author').value;
+        const genre = document.getElementById('genre').value;
+        const year = document.getElementById('year').value;
+        const rating = document.getElementById('rating').value;
 
-    const newBook = { title, author, genre, year };
-    books.push(newBook);
-    displayBooks(books);
-    saveBooksToStorage(); // Salva os livros no localStorage
+        const book = { title, author, genre, year, rating, ratings: [] };
+        const books = getBooks();
+        books.push(book);
+        setBooks(books);
+        
+        addBookToList(book, books.length - 1);
+        bookForm.reset();
+    }
 
-    // Clear input fields
-    document.getElementById('title').value = '';
-    document.getElementById('author').value = '';
-    document.getElementById('genre').value = '';
-    document.getElementById('year').value = '';
-}
+    function addBookToList(book, index) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            ${book.title} by ${book.author}, Genre: ${book.genre}, Year: ${book.year}, Rating: ${book.rating}
+            <button onclick="showRatingForm(${index})">Add Rating</button>
+            <form class="rating-form" id="rating-form-${index}">
+                <input type="number" id="new-rating-${index}" min="1" max="5" required>
+                <button type="submit">Submit</button>
+            </form>
+        `;
+        bookList.appendChild(li);
 
-function searchBook() {
-    const searchTerm = document.getElementById('searchTerm').value.toLowerCase();
-    const results = books.filter(book =>
-        book.title.toLowerCase().includes(searchTerm) ||
-        book.author.toLowerCase().includes(searchTerm) ||
-        book.genre.toLowerCase().includes(searchTerm) ||
-        book.year.toLowerCase().includes(searchTerm)
-    );
-    displayBooks(results);
-}
+        const ratingForm = li.querySelector(`#rating-form-${index}`);
+        ratingForm.addEventListener('submit', (e) => updateRating(e, index));
+    }
 
-function sortBooks() {
-    const sortBy = document.getElementById('sort').value;
-    books.sort((a, b) => {
-        if (a[sortBy] < b[sortBy]) return -1;
-        if (a[sortBy] > b[sortBy]) return 1;
-        return 0;
-    });
-    displayBooks(books);
-}
+    window.showRatingForm = function(index) {
+        const ratingForm = document.getElementById(`rating-form-${index}`);
+        ratingForm.style.display = 'block';
+    }
+
+    function updateRating(e, index) {
+        e.preventDefault();
+        
+        const newRating = document.getElementById(`new-rating-${index}`).value;
+        const books = getBooks();
+        const book = books[index];
+
+        book.ratings.push(Number(newRating));
+        book.rating = calculateAverageRating(book.ratings);
+
+        setBooks(books);
+        bookList.innerHTML = '';
+        displayBooks();
+    }
+
+    function calculateAverageRating(ratings) {
+        const sum = ratings.reduce((a, b) => a + b, 0);
+        return (sum / ratings.length).toFixed(2);
+    }
+});
+
