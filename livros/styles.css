@@ -1,42 +1,85 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 800px;
-    margin: 20px auto;
     padding: 20px;
     background-color: #f4f4f4;
-    border-radius: 5px;
 }
 
 h1, h2 {
     text-align: center;
 }
 
-input[type="text"], select, button {
-    margin: 5px;
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 0px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+form input {
+    width: 100%;
     padding: 8px;
-    width: calc(100% - 22px);
-    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-#catalog {
-    margin-bottom: 20px;
+button:hover {
+    background-color: #0056b3;
 }
 
-.book {
+#book-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#book-list li {
+    background: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rating-form {
+    display: none;
+    margin-top: 10px;
+}
+
+.rating-form input {
+    width: 50px;
+    padding: 8px;
+    margin-right: 10px;
     border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
+    border-radius: 4px;
 }
 
-#addBookForm, #searchForm, #sortOptions {
-    margin-bottom: 10px;
+.rating-form button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.rating-form button:hover {
+    background-color: #218838;
 }
