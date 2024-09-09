@@ -1,0 +1,43 @@
+.catalogo{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap:10px;
+}
+.card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(163, 162, 162);
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+.card:hover{
+    transform: scale(1.02);
+}
+.card img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+.carrinho{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.item_carrinho{
+    background-color: rgb(205, 205, 205);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
