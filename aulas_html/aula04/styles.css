@@ -34,3 +34,25 @@ li {
     height: 45px; /* altura do botão */
     cursor: pointer; /* muda o ponteiro do mouse quando passa em cima */
 }
+
+#header {
+    display: flex; /* posiciona os elementos internos um ao lado do outro */
+    justify-content: space-between; /* Crie um espaço entre o h1 e o nav */
+    padding: 15px;
+    background-color: #ccc;
+    align-items: center; /* centraliza os elementos internos na vertical */
+}
+
+ul {
+    width: 250px; /* Largura da lista */
+    display: flex;
+    justify-content: space-around; /* Coloca um espaçamento entre os itens/links */
+}
+
+.main {
+    height: 95vh; /* Altura de 95% da tela do dispositivo */
+    padding-top: 10px;
+    display: flex;
+    justify-content: center; /* centraliza na horizontal */
+    align-items: center; /* centraliza na vertical */
+}
