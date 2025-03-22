@@ -1,36 +1,51 @@
-/* Seletor universal */
-* {
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Infinity School</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Sobre</a></li>
+            </ul>
+        </nav>
+    </header>
 
-/* Seletor de tag */
-a {
-    color: black; /* cor do texto */
-    text-decoration: none;  /* remove o sublinhado */
-    font-size: 22px; /* Tamanho da fonte */
-    font-family: Tahoma; /* Altera a fonte */
-    font-weight: bold; /* Altera o peso da fonte */
-}
 
-li {
-    list-style-type: none; /* altera o bullet do li */
-}
+    <main class="main">
+        <form action="home.html" method="POST">
+            <div class="form-div">
+                <label for="contato">Contato</label>
+                <input type="text" id="contato" 
+                placeholder="E-mail ou whattsapp">
+            </div>
 
-/* selecionando pela class */
-.form-div {
-    margin-bottom: 20px;
-}
+            <div class="form-div">
+                <label for="assunto">Assunto</label>
+                <input type="text" id="assunto" 
+                placeholder="Assunto">
+            </div >
 
-/* Selecionando o elemento pelo id */
-#btn-submit {
-    padding: 12px;
-    font-weight: bold; 
-    background-color: orange; /* cor de fundo */
-    font-size: 18px;
-    border-style: solid; /* estilo da borda */
-    border-width: 1px; /* largura da borda */
-    border-color: black; /* cor da borda */
-    height: 45px; /* altura do botão */
-    cursor: pointer; /* muda o ponteiro do mouse quando passa em cima */
-}
+            <div class="form-div">
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem"></textarea>
+            </div>
+
+            <input id="btn-submit" type="submit" value="enviar">
+        </form>
+    </main>
+
+    <footer>
+        <p style="color: crimson;">Todos os direitos reservados. &copy;</p>
+    </footer>
+
+   
+</body>
+</html>
