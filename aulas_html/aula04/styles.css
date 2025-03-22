@@ -1,0 +1,36 @@
+/* Seletor universal */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Seletor de tag */
+a {
+    color: black; /* cor do texto */
+    text-decoration: none;  /* remove o sublinhado */
+    font-size: 22px; /* Tamanho da fonte */
+    font-family: Tahoma; /* Altera a fonte */
+    font-weight: bold; /* Altera o peso da fonte */
+}
+
+li {
+    list-style-type: none; /* altera o bullet do li */
+}
+
+/* selecionando pela class */
+.form-div {
+    margin-bottom: 20px;
+}
+
+/* Selecionando o elemento pelo id */
+#btn-submit {
+    padding: 12px;
+    font-weight: bold; 
+    background-color: orange; /* cor de fundo */
+    font-size: 18px;
+    border-style: solid; /* estilo da borda */
+    border-width: 1px; /* largura da borda */
+    border-color: black; /* cor da borda */
+    height: 45px; /* altura do botão */
+    cursor: pointer; /* muda o ponteiro do mouse quando passa em cima */
+}
