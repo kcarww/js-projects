@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda da Barbearia</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+  <h2 class="mb-4">Agendamento de Barbearia</h2>
+
+  <form id="form-agendamento" class="mb-4">
+    <div class="mb-3">
+      <label for="nome" class="form-label">Nome do Cliente</label>
+      <input type="text" id="nome" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="horario" class="form-label">Horário</label>
+      <input type="time" id="horario" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="barbeiro" class="form-label">Barbeiro</label>
+      <select id="barbeiro" class="form-select" required>
+        <option value="" disabled selected>Escolha um barbeiro</option>
+        <option value="João">João</option>
+        <option value="Carlos">Carlos</option>
+        <option value="Marcos">Marcos</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Agendar</button>
+  </form>
+
+  <h4>Agendamentos</h4>
+  <div class="table-responsive">
+    <table class="table table-striped" id="tabela-agendamentos">
+      <thead class="table-dark">
+        <tr>
+          <th>Nome do Cliente</th>
+          <th>Horário</th>
+          <th>Barbeiro</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById("form-agendamento");
+  const tabela = document.querySelector("#tabela-agendamentos tbody");
+
+  document.addEventListener("DOMContentLoaded", carregarAgendamentos);
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value;
+    const horario = document.getElementById("horario").value;
+    const barbeiro = document.getElementById("barbeiro").value;
+
+    const agendamento = { nome, horario, barbeiro };
+    salvarAgendamento(agendamento);
+    adicionarNaTabela(agendamento);
+    form.reset();
+  });
+
+  function salvarAgendamento(agendamento) {
+    const agendamentos = JSON.parse(localStorage.getItem("agendamentos")) || [];
+    agendamentos.push(agendamento);
+    localStorage.setItem("agendamentos", JSON.stringify(agendamentos));
+  }
+
+  function carregarAgendamentos() {
+    const agendamentos = JSON.parse(localStorage.getItem("agendamentos")) || [];
+    agendamentos.forEach(adicionarNaTabela);
+  }
+
+  function adicionarNaTabela({ nome, horario, barbeiro }) {
+    const row = tabela.insertRow();
+    row.insertCell(0).innerText = nome;
+    row.insertCell(1).innerText = horario;
+    row.insertCell(2).innerText = barbeiro;
+  }
+</script>
+
+</body>
+</html>
